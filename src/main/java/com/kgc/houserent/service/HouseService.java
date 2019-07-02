@@ -18,4 +18,8 @@ public interface HouseService {
     int deleteHouse(String id);
 
     PageInfo<House> selectHousePass(Integer isPass,Integer page,Integer rows);
+
+    int updateIsPass(String id);
+
+    int updateNoPass(String id);
 }

@@ -56,4 +56,20 @@ public class HouseServiceImpl implements HouseService {
         PageInfo<House> pageInfo=new PageInfo<>(houseList);
         return  pageInfo;
     }
+
+    @Override
+    public int updateIsPass(String id) {
+        House house=new House();
+        house.setId(id);
+        house.setIspass(1);
+        return houseMapper.updateByPrimaryKeySelective(house);
+    }
+
+    @Override
+    public int updateNoPass(String id) {
+        House house=new House();
+        house.setId(id);
+        house.setIspass(0);
+        return houseMapper.updateByPrimaryKeySelective(house);
+    }
 }
