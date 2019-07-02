@@ -12,8 +12,8 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:forward page="page/login.jsp"></jsp:forward>
+<%--<jsp:forward page="admin/jsp/admin.html"></jsp:forward>--%>
 <%--<%  request.getRequestDispatcher("../admin/admin.html").forward(request,response);%>--%>
-<%--<a href="admin/jsp/admin.html"><input type="button" value="点我"></a>--%>
+<a href="admin/jsp/admin.html"><input type="button" value="点我"></a>
 </body>
 </html>
