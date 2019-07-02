@@ -251,7 +251,8 @@
     ON house.`STREET_ID`=street.`ID`
     WHERE house.id=#{id}
   </select>
-  <select id="" parameterType="int" resultType="House">
+
+  <select id="selectHousePass" parameterType="int" resultType="House">
       SELECT h.id,title,price,floorage,contact,path,s.name AS sname,d.`NAME` AS dname,t.`NAME` AS tname
   FROM house AS h
         INNER JOIN street AS s ON h.street_id=s.id
