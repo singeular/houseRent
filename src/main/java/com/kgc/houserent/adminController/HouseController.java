@@ -13,12 +13,13 @@ import java.util.Map;
 
 @Controller("HouseController2")
 public class HouseController {
+
     @Autowired
     private HouseService houseService;
 
-    @RequestMapping("/getHouseNoPass")
+    @RequestMapping("/selectHouseWaitPass")
     @ResponseBody
-    public Map<String,Object>getHouseNoPass(Integer page,Integer rows){
+    public Map<String,Object>selectHouseWaitPass(Integer page,Integer rows){
         page=page==null?1:page;
         PageInfo<House> pageInfo=houseService.selectHousePass(0,page,rows);
         Map<String,Object> map=new HashMap<>();
@@ -27,14 +28,32 @@ public class HouseController {
         return map;
     }
 
-    @RequestMapping("/getHousePass")
+    @RequestMapping("/selectHouseHadPass")
     @ResponseBody
-    public Map<String,Object>getHousePass(Integer page,Integer rows){
+    public Map<String,Object>selectHouseHadPass(Integer page,Integer rows){
         page=page==null?1:page;
         PageInfo<House> pageInfo=houseService.selectHousePass(1,page,rows);
         Map<String,Object> map=new HashMap<>();
         map.put("total",pageInfo.getTotal());
         map.put("rows",pageInfo.getList());
+        return map;
+    }
+
+    @RequestMapping("/passOne")
+    @ResponseBody
+    public Map<String,Object> passOne(String id){
+        int i=houseService.updateIsPass(id);
+        Map<String,Object> map=new HashMap<>();
+        map.put("result",i);
+        return map;
+    }
+
+    @RequestMapping("/cancelPass")
+    @ResponseBody
+    public Map<String,Object> cancelPass(String id){
+        int i=houseService.updateNoPass(id);
+        Map<String,Object> map=new HashMap<>();
+        map.put("result",i);
         return map;
     }
 }
